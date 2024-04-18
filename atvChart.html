@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <span>Dashboard de Temperatura & Umidade</span>
+            </div>
+        </div>
+        <div class="dashboard">
+            <canvas id="myChart1" width="175" height="100"></canvas>
+            <canvas id="myChart2" width="175" height="100"></canvas>
+        </div>
+        <div class="credits">
+            <span>Feito por Fabricio Prudente Ferreira - 1CCOA &copy;<br>RA: 04241070</span>
+        </div>
+    </body>
+    <script>
+        const ctx1 = document.getElementById('myChart1');
+        const ctx2 = document.getElementById('myChart2');
+      
+        const scaleOptionsX = {
+            border: {
+                color: 'white'
+            },
+            grid: {
+                color: '#666',
+                tickColor: 'white'
+            },
+            ticks: {
+                color: 'white'
+            }
+        }
+        
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+                datasets: [{
+                    label: 'Temperatura Média',
+                    data: [22, 24, 27, 23, 20, 18],
+                    backgroundColor: 'orange',
+                }, {
+                    label: 'Umidade Média',
+                    data: [90, 89, 93, 87, 88, 82],
+                    backgroundColor: '#36A2EB',
+                }]
+            },
+            options: {
+                scales: {
+                    x: scaleOptionsX,
+                    y: {
+                        beginAtZero: true,
+                        border: {
+                            color: 'white'
+                        },
+                        grid: {
+                            color: '#666',
+                            tickColor: 'white'
+                        },
+                        ticks: {
+                            color: 'white'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Tempera e Umidade Média (por mês)',
+                        color: 'white',
+                        font: {
+                            weight: 'bold',
+                            size: 25
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            color: 'white'
+                        }
+                    }
+                }
+            }
+        });
+
+        new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [{
+                    label: 'Temperatura',
+                    data: [30, 29, 28, 25, 22, 23],
+                    borderWidth: 4,
+                    backgroundColor: 'orange',
+                    borderColor: 'orange'
+                }, {
+                    label: 'Umidade',
+                    data: [80, 82, 80, 85, 80, 83],
+                    borderWidth: 4,
+                    backgroundColor: '#36A2EB',
+                    borderColor: '#36A2EB'
+                }]
+            },
+            options: {
+                scales: {
+                    x: scaleOptionsX,
+                    y: {
+                        border: {
+                            color: 'white'
+                        },
+                        grid: {
+                            color: '#666',
+                            tickColor: 'white'
+                        },
+                        ticks: {
+                            color: 'white'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Dia 15/04/2024 - Temperatura e Umidade',
+                        color: 'white',
+                        font: {
+                            weight: 'bold',
+                            size: 25
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            color: 'white'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</html>
